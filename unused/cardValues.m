@@ -1,0 +1,18 @@
+function cardValues(app)
+
+imagefiles = dir('*.png');      
+nfiles = length(imagefiles) 
+for ii=1:nfiles
+   currentfilename = imagefiles(ii).name;
+   imgFileNames{ii} = char(currentfilename);
+end
+       
+cardId = [1:52];
+%v = [10 2 3 4 5 6 7 8 9 1 10 10 10];
+%cardValue = repelem(v,4)'
+%cardValue = [10 10 10 10 3 3 4 4 4 4 5 5 5 5 6 6 6 6 7 7 7 7 8 8 8 8 9 9 9 9 1 1 1 1 10 10 10 10 10 10 10 10 10 10 10 10 3 3 2 2 2 2]
+rlName="cardPhotos/" + string(imgFileNames)'
+cards = [cardId', cardValue', rlName]
+
+% shuffledCards = cards(randperm(size(cards, 1)), :)
+end

@@ -1,0 +1,39 @@
+function dealerPlay(app,dealerturn)
+dealerhits = 0;
+while dealerturn == 1
+    app.numCardsDealt = app.numCardsDealt + 1;
+    app.Image2_3.ImageSource = app.shuffledCards{app.numCardsDealt,3}; %replace facedown image (dealer card image 2) with next card in deck
+    app.Label_3.Text = num2str(str2double(app.Label_3.Text) + str2double(app.shuffledCards{app.numCardsDealt,2}));
+    %if else structure for dealer score
+
+    switch dealerhits
+        case 0
+            app.Image3_3.Visible = 'on'; %card image turns on
+            app.Image3_3.ImageSource = app.shuffledCards{app.numCardsDealt,3}; %adds image for 3rd card
+        case 1
+            app.Image4_3.Visible = 'on'; %card image turns on
+            app.Image4_3.ImageSource = app.shuffledCards{app.numCardsDealt,3}; %adds image for 4th card
+        case 2
+            app.Image5_3.Visible = 'on'; %card image turns on
+            app.Image5_3.ImageSource = app.shuffledCards{app.numCardsDealt,3}; %adds image for 5th card
+        case 3
+            app.Image6_3.Visible = 'on'; %card image turns on
+            app.Image6_3.ImageSource = app.shuffledCards{app.numCardsDealt,3}; %adds image for 6th card
+        otherwise
+            app.Image6_3.Visible = 'on'; %card image turns on
+            app.Image6_3.ImageSource = app.shuffledCards{app.numCardsDealt,3}; %updates image 6 slot for over 6 cards in rare cases
+    end
+    
+    score3 = str2double(app.Label_3.Text);
+    if (score3 < 17)
+        app.dealerturn = 1;
+        dealerhits = dealerhits + 1;
+    elseif (score3 >= 17)
+        app.dealerturn = 0;
+    else
+        app.ErrorLabel.Visible = 'on';
+    end
+end
+
+    
+end
